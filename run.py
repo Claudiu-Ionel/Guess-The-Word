@@ -1,4 +1,8 @@
-"""Module providing a random number generator function"""
+"""Modules imported:
+   - datetime - current date methods
+   - random - function that provides a random number
+"""
+from datetime import datetime
 import random
 
 #Reusable Functions
@@ -9,13 +13,25 @@ def hide_word(word):
         hidden_word = hidden_word.replace(letter, "*")
     return hidden_word
 
+def greet_player():
+    """ function that takes in the time and prints out a greeting to the player"""
+    if hour_now in range(13):
+        print("Good day player (^_^)")
+    if hour_now in range(13, 19):
+        print("Good afternoon player (^_^)")
+    if hour_now in range(19, 24):
+        print("Good evening player (^_^)")
 
 
 words_list = ["test", "longitude", "karma", "samurai",
               "language", "beginner", "alphabet", "envy", "binocular", "computation"]
 secret_word = words_list[random.randint(1, len(words_list) - 1)] 
 word_guessed = hide_word(secret_word)
+hour_now = datetime.now().hour
+
 print(secret_word)
 print(word_guessed) #run (\n)
+
+greet_player()
 
 #End of file (EOF)
