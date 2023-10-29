@@ -34,4 +34,18 @@ print(word_guessed) #run (\n)
 
 greet_player()
 
+
+#Ask for username
+username = input("What is your name? : ")
+print(f"username: {username}")
+
+# game logic functions
+startGame = input("Want to start the game? (y/n): ")
+if (startGame == ("y" or "Y")):
+    print("Game started")
+else:
+    print("Game ended")
+
+
+
 #End of file (EOF)
