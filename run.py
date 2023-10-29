@@ -4,15 +4,9 @@
 """
 from datetime import datetime
 import random
+from functions import hide_word
 
 #Reusable Functions
-def hide_word(word):
-    """Function that changes all characters in a word to "*"."""
-    hidden_word = word
-    for letter in hidden_word:
-        hidden_word = hidden_word.replace(letter, "*")
-    return hidden_word
-
 def greet_player():
     """ function that takes in the time and prints out a greeting to the player"""
     if hour_now in range(13):
@@ -41,11 +35,9 @@ print(f"username: {username}")
 
 # game logic functions
 startGame = input("Want to start the game? (y/n): ")
-if (startGame == ("y" or "Y")):
+if startGame == ("y" or "Y"):
     print("Game started")
 else:
     print("Game ended")
 
-
-
-#End of file (EOF)
+# End of file (EOF)
