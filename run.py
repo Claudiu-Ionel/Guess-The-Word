@@ -1,3 +1,8 @@
-# Your code goes here.
-# You can delete these comments, but do not change the name of this file
-# Write your code to expect a terminal of 80 characters wide and 24 rows high
+"""Module providing a random number generator function"""
+import random
+
+words_list = ["test", "longitude", "karma", "samurai",
+              "language", "beginner", "alphabet", "envy", "binocular", "computation"]
+
+secret_word = words_list[random.randint(1, len(words_list) - 1)] #run (\n)
+print(secret_word)
