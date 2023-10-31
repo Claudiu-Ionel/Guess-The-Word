@@ -44,11 +44,14 @@ def find_index(letter, word):
         return indexes
     return -1
 
-def start_game(secret_word, word_guessed, num_of_guesses):
+def start_game(secret_word, word_guessed, num_of_guesses, username):
     player_word_guess = word_guessed
     print("-------------")
+    print(f"Your word has {len(secret_word)} characters")
     print(f"You have {num_of_guesses} attempts to guess the word")
     print(f"Your guess: {player_word_guess}")
+    print("-------------")
+    
     player_letter_guess = ""
     # users can only input one character and it has to be a letter
     while True:
@@ -56,7 +59,7 @@ def start_game(secret_word, word_guessed, num_of_guesses):
         # if users entered a single character and it is a letter:
         # break while loop
         if len(user_input) == 1 and user_input.isalpha():
-            player_letter_guess = user_input
+            player_letter_guess = user_input.lower()
             break
         # if users have not entered a single letter:
         # repeat while loop
@@ -87,7 +90,7 @@ def start_game(secret_word, word_guessed, num_of_guesses):
     # Recursion!
     # Use the start_game function with the new values
     if secret_word != player_word_guess:
-        start_game(secret_word, player_word_guess, num_of_guesses)
+        start_game(secret_word, player_word_guess, num_of_guesses, username)
     # if the player guessed the word:
     # End the program
     else:
