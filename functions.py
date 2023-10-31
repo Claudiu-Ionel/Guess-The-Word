@@ -70,8 +70,7 @@ def start_game(secret_word, word_guessed, num_of_guesses):
     if letter_indexes != -1:
         player_word_guess = replace_hidden_character(
             word_guessed, letter_indexes, player_letter_guess)
-        print(f"The letter \"{
-              player_letter_guess}\" is in the word! Good Job!")
+        print(f"The letter \"{player_letter_guess}\" is in the word! Good Job!")
     else:
         # if the letter is not in the secret word:
         # Decrease the number of guesses the player has
@@ -92,5 +91,4 @@ def start_game(secret_word, word_guessed, num_of_guesses):
     # if the player guessed the word:
     # End the program
     else:
-        print(f"Congratulations! The word was \"{
-              secret_word}\" and you guessed it!")
+        print(f"Congratulations! The word was \"{secret_word}\" and you guessed it!")
