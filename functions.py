@@ -22,7 +22,6 @@ def replace_hidden_character(word, indexes, letter):
         new_word[index] = letter
 
     print(new_word)
-    print(f"player letter guess {letter}")
     return "".join(new_word)
 
 
@@ -67,7 +66,6 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
         continue
 
     letter_indexes = find_index(player_letter_guess, secret_word)
-    print(letter_indexes)
     # If player guess is found in the secret word:
     # Replace the * with the letter at the corresponding index
     if letter_indexes != -1:
