@@ -69,7 +69,7 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
     player_word_guess = word_guessed
     initial_number_of_guesses = round(len(secret_word["word"]) / 2 + 1)
     print("-------------")
-    print(f"Your word has {len(secret_word["word"])} characters")
+    print(f"Your word has {len(secret_word['word'])} characters")
     print(f"You have {num_of_guesses} attempts to guess the word")
     print(f"Your guess: {player_word_guess}")
     print("-------------")
@@ -103,7 +103,7 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
     # The player is given a hint if number of guesses is getting too low
     if num_of_guesses <= initial_number_of_guesses / 2:
         print("This word seems difficult (^_^)")
-        print(f"Here is a hint: {secret_word["hint"]}")
+        print(f"Here is a hint: {secret_word['hint']}")
     # If the player has no remaining number of guesses:
     # Display message and the secret word the player did not guess
     if num_of_guesses == 0:
@@ -119,4 +119,4 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
     # if the player guessed the word:
     # End the program
     else:
-        print(f"Congratulations! The word was \"{secret_word["word"]}\" and you guessed it!")
+        print(f"Congratulations! The word was \"{secret_word['word']}\" and you guessed it!")
