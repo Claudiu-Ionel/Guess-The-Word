@@ -10,9 +10,11 @@ from operator import itemgetter
 from functions import prepare_game
 from functions import start_game
 
-#Reusable Functions
+# Reusable Functions
+
+
 def greet_player():
-    """ function that takes in the time and prints out a greeting to the player"""
+    """function that prints out the time and greets the player"""
     print("-----------------")
     if hour_now in range(13):
         print("Good day player (^_^)")
@@ -21,6 +23,7 @@ def greet_player():
     if hour_now in range(19, 24):
         print("Good evening player (^_^)")
     print("-----------------")
+
 
 secret_word_list = {
     "easy": [
@@ -49,7 +52,10 @@ secret_word_list = {
         {"word": "aggressivity", "hint": "Intensity of confrontation"},
         {"word": "battleground", "hint": "Place of conflict"},
         {"word": "biodiversity", "hint": "Variety of life"},
-        {"word": "biophysicist", "hint": "Scientist studying life's physical aspects"},
+        {
+            "word": "biophysicist",
+            "hint": "Scientist studying life's physical aspects"
+        },
         {"word": "calligrapher", "hint": "Skilled in elegant writing"},
         {"word": "candleholder", "hint": "Holds a source of light"},
         {"word": "creativeness", "hint": "Source of innovative ideas"},
@@ -65,7 +71,7 @@ hour_now = datetime.now().hour
 
 greet_player()
 
-#Ask for username
+# Ask for username
 username = input("What is your name? : ")
 print(f"username: {username}")
 
@@ -74,7 +80,9 @@ startGame = input("Want to start the game? (y/n): ")
 if startGame == ("y" or "Y"):
     print("Game started")
     game_data = prepare_game(secret_word_list)
-    secret_word, word_guessed, num_of_guesses = itemgetter('secret_word', 'word_guessed', 'num_of_guesses')(game_data) # type: ignore
+    secret_word = game_data["secret_word"]
+    word_guessed = game_data["word_guessed"]
+    num_of_guesses = game_data["num_of_guesses"]
     start_game(secret_word, word_guessed, num_of_guesses, username)
 else:
     print("Game ended")
