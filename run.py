@@ -25,10 +25,49 @@ def greet_player():
 
 words_list = ["test", "longitude", "karma", "samurai",
               "language", "beginner", "alphabet", "envy", "binocular", "computation"]
+secret_word_list = {
+    "easy": [
+        {"word": "dog", "hint": "Four-legged friend with a tail"},
+        {"word": "cat", "hint": "Independent feline companion"},
+        {"word": "ball", "hint": "Round and used in games"},
+        {"word": "nose", "hint": "Found on your face, helps you smell"},
+        {"word": "phone", "hint": "Portable communication device"},
+        {"word": "gold", "hint": "Precious metal, symbol of wealth"},
+    ],
+    "medium": [
+        {"word": "bathroom", "hint": "Where you go to freshen up"},
+        {"word": "deadline", "hint": "Time limit for a task"},
+        {"word": "favorite", "hint": "What you like the most"},
+        {"word": "birthday", "hint": "The day you celebrate your birth"},
+        {"word": "accurate", "hint": "Correct and precise"},
+        {"word": "aircraft", "hint": "Flies in the sky"},
+        {"word": "champion", "hint": "The best in a competition"},
+        {"word": "charming", "hint": "Attractive and pleasant"},
+        {"word": "creature", "hint": "A living being"},
+        {"word": "samurai", "hint": "Skilled warrior from Japan"},
+        {"word": "alphabet", "hint": "Letters used to write words"},
+        {"word": "delivery", "hint": "Bringing something to you"},
+    ],
+    "hard": [
+        {"word": "aggressivity", "hint": "Intensity of confrontation"},
+        {"word": "battleground", "hint": "Place of conflict"},
+        {"word": "biodiversity", "hint": "Variety of life"},
+        {"word": "biophysicist", "hint": "Scientist studying life's physical aspects"},
+        {"word": "calligrapher", "hint": "Skilled in elegant writing"},
+        {"word": "candleholder", "hint": "Holds a source of light"},
+        {"word": "creativeness", "hint": "Source of innovative ideas"},
+        {"word": "contemporary", "hint": "In the present time"},
+        {"word": "continuation", "hint": "Going forward with something"},
+        {"word": "eavesdropper", "hint": "Secret listener"},
+        {"word": "entrepreneur", "hint": "Business innovator"},
+        {"word": "exacerbation", "hint": "Intensification of a problem"},
+        {"word": "fearsomeness", "hint": "Quality of being intimidating"},
+    ]
+}
 secret_word = words_list[random.randint(1, len(words_list) - 1)] 
 word_guessed = hide_word(secret_word)
 hour_now = datetime.now().hour
-num_of_guesses = round(len(secret_word) / 2)
+num_of_guesses = round(len(secret_word) / 2 + 1)
 
 greet_player()
 
