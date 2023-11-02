@@ -12,8 +12,8 @@ from functions import start_game
 
 #Reusable Functions
 def greet_player():
-    print("-----------------")
     """ function that takes in the time and prints out a greeting to the player"""
+    print("-----------------")
     if hour_now in range(13):
         print("Good day player (^_^)")
     if hour_now in range(13, 19):
@@ -22,9 +22,6 @@ def greet_player():
         print("Good evening player (^_^)")
     print("-----------------")
 
-
-words_list = ["test", "longitude", "karma", "samurai",
-              "language", "beginner", "alphabet", "envy", "binocular", "computation"]
 secret_word_list = {
     "easy": [
         {"word": "dog", "hint": "Four-legged friend with a tail"},

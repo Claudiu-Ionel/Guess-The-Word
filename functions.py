@@ -44,28 +44,42 @@ def find_index(letter, word):
 
 
 def prepare_game(secret_word_list):
+    """Function that prepares data before game start:
+        - sets difficulty with user input
+        - selects a random word according to difficulty
+        - sets number of guesses according to difficulty
+        - returns object with secret_word, word_guessed, num_of_guesses keys
+    """
     difficulty = ""
     while True:
         selected_difficulty = input("select difficulty(easy/medium/hard): ")
-        # if users entered a single character and it is a letter:
+        # if users entered one of the available difficulties:
         # break while loop
         if selected_difficulty in ["easy", "medium", "hard"]:
             difficulty = selected_difficulty
             break
-        # if users have not entered a single letter:
+        # if users have not entered one of the available difficulties:
         # repeat while loop
         print('Please select the right difficulty')
         continue
-
-
-    
-    secret_word = secret_word_list[difficulty][random.randint(1, len(secret_word_list) - 1)] 
+    random_int =  len(secret_word_list[difficulty]) - 1
+    secret_word = secret_word_list[difficulty][random.randint(1, random_int)] 
     word_guessed = hide_word(secret_word["word"])
     num_of_guesses = round(len(secret_word["word"]) / 2 + 1)
-    
-    return {"secret_word": secret_word, "word_guessed": word_guessed, "num_of_guesses": num_of_guesses}
+    return {
+        "secret_word": secret_word, 
+        "word_guessed": word_guessed, 
+        "num_of_guesses": num_of_guesses
+        }
 
 def start_game(secret_word, word_guessed, num_of_guesses, username):
+    """Function that runs game functionality:
+        - takes in as input the letter the player is guessing 
+        - checks if letter is in the word
+        - adds the letter to the players guessed word
+        - checks secret word and player guessed word equality
+        - uses recursion to repeat process 
+    """
     player_word_guess = word_guessed
     initial_number_of_guesses = round(len(secret_word["word"]) / 2 + 1)
     print("-------------")
@@ -100,10 +114,13 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
         # Decrease the number of guesses the player has
         num_of_guesses -= 1
         print(f"The letter \"{player_letter_guess}\" is not in the word")
-    # The player is given a hint if number of guesses is getting too low
-    if num_of_guesses <= initial_number_of_guesses / 2:
-        print("This word seems difficult (^_^)")
-        print(f"Here is a hint: {secret_word['hint']}")
+        # The player is given a hint if number of guesses is getting too low
+        if num_of_guesses <= initial_number_of_guesses / 2 or num_of_guesses == 0:
+            print("-_-_-_-_-_-_-_-_-_-_-_-_-")
+            print("This word seems difficult (^_^)")
+            print(f"Here is a hint: {secret_word['hint']}")
+            print("-_-_-_-_-_-_-_-_-_-_-_-_-")
+    
     # If the player has no remaining number of guesses:
     # Display message and the secret word the player did not guess
     if num_of_guesses == 0:
