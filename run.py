@@ -6,8 +6,8 @@
 """
 import sys
 from datetime import datetime
-import random
-from functions import hide_word
+from operator import itemgetter
+from functions import prepare_game
 from functions import start_game
 
 #Reusable Functions
@@ -64,10 +64,7 @@ secret_word_list = {
         {"word": "fearsomeness", "hint": "Quality of being intimidating"},
     ]
 }
-secret_word = words_list[random.randint(1, len(words_list) - 1)] 
-word_guessed = hide_word(secret_word)
 hour_now = datetime.now().hour
-num_of_guesses = round(len(secret_word) / 2 + 1)
 
 greet_player()
 
@@ -77,8 +74,10 @@ print(f"username: {username}")
 
 # game logic functions
 startGame = input("Want to start the game? (y/n): ")
-if (startGame == ("y" or "Y")):
+if startGame == ("y" or "Y"):
     print("Game started")
+    game_data = prepare_game(secret_word_list)
+    secret_word, word_guessed, num_of_guesses = itemgetter('secret_word', 'word_guessed', 'num_of_guesses')(game_data) # type: ignore
     start_game(secret_word, word_guessed, num_of_guesses, username)
 else:
     print("Game ended")
