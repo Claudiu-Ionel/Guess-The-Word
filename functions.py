@@ -11,11 +11,11 @@ Module providing:
 import random
 import sys
 # The last three are used to add color to text in terminal
-from colorama import init as colorama_init
+from colorama import init
 from colorama import Fore
 from colorama import Style
 #initialize colorama
-colorama_init()
+init()
 
 def hide_word(word):
     """Function that changes all characters in a word to "*"."""
