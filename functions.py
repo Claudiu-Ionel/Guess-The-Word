@@ -161,7 +161,7 @@ def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
     if num_of_guesses == 0:
         print("-------------\n")
         print("Sorry you did not guess the word")
-        print(f"The word was \"{secret_word}\"")
+        print(f"The word was \"{secret_word['word']}\"")
         print("Better luck next time! ^_^")
         print("\n-------------\n")
         restart_game = input("Do you want to play again? (y/n):")
