@@ -58,13 +58,13 @@ secret_word_list = {
         },
         {"word": "calligrapher", "hint": "Skilled in elegant writing"},
         {"word": "candleholder", "hint": "Holds a source of light"},
-        {"word": "creativeness", "hint": "Source of innovative ideas"},
+        {"word": "creativity", "hint": "Source of innovative ideas"},
         {"word": "contemporary", "hint": "In the present time"},
         {"word": "continuation", "hint": "Going forward with something"},
         {"word": "eavesdropper", "hint": "Secret listener"},
         {"word": "entrepreneur", "hint": "Business innovator"},
         {"word": "exacerbation", "hint": "Intensification of a problem"},
-        {"word": "fearsomeness", "hint": "Quality of being intimidating"},
+        {"word": "fearsom", "hint": "Quality of being intimidating"},
     ]
 }
 hour_now = datetime.now().hour
