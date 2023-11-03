@@ -10,7 +10,12 @@ Module providing:
 
 import random
 import sys
-
+# The last three are used to add color to text in terminal
+from colorama import init as colorama_init
+from colorama import Fore
+from colorama import Style
+#initialize colorama
+colorama_init()
 
 def hide_word(word):
     """Function that changes all characters in a word to "*"."""
@@ -110,8 +115,8 @@ def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
     player_word_guess = word_guessed
     initial_number_of_guesses = round(len(secret_word["word"]) / 2 + 1)
     print("-------------\n")
-    print(f"Your word has {len(secret_word['word'])} characters")
-    print(f"You have {num_of_guesses} attempts to guess the word")
+    print(f"Your word has {Fore.GREEN}{len(secret_word['word'])}{Style.RESET_ALL} characters")
+    print(f"You have {Fore.RED}{num_of_guesses}{Style.RESET_ALL} attempts to guess the word")
     print(f"Your guess: {player_word_guess}")
     print("\n-------------\n")
 
@@ -146,7 +151,7 @@ def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
         if num_of_guesses <= hint_hidden or num_of_guesses == 0:
             print("-_-_-_-_-_-_-_-_-_-_-_-_-\n")
             print("This word seems difficult (^_^)")
-            print(f"Here is a hint: {secret_word['hint']}")
+            print(f"Here is a hint: {Fore.YELLOW}{secret_word['hint']}{Style.RESET_ALL}")
             print("\n-_-_-_-_-_-_-_-_-_-_-_-_-\n")
 
     # If the player has no remaining number of guesses:
