@@ -1,4 +1,15 @@
+"""
+Module providing:
+    * hide_word - replaces all characters in a string with "*"
+    * replace_hidden_character - replaces "*" with letter at given indexes
+    * find_index - Function that finds occurances of a letter in a word
+    * prepare_game - Function that prepares data before game start
+    * start_game - Function that runs game functionality
+    * restart - Function that prepares new data and runs game functionality
+"""
+
 import random
+import sys
 
 
 def hide_word(word):
@@ -74,7 +85,21 @@ def prepare_game(secret_word_list):
         }
 
 
-def start_game(secret_word, word_guessed, num_of_guesses, username):
+def restart(secret_word_list):
+    """Function that restarts the game functionality:
+        - uses prepare_game function to set initial data
+        - runs start_game function with new data
+    """
+    print("Game started")
+    game_data = prepare_game(secret_word_list)
+    secret_word = game_data["secret_word"]
+    word_guessed = game_data["word_guessed"]
+    num_of_guesses = game_data["num_of_guesses"]
+    start_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
+    print("\n-------------\n")
+
+
+def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
     """Function that runs game functionality:
         - takes in as input the letter the player is guessing
         - checks if letter is in the word
@@ -119,24 +144,50 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
         # The player is given a hint if number of guesses is getting too low
         hint_hidden = initial_number_of_guesses / 2
         if num_of_guesses <= hint_hidden or num_of_guesses == 0:
-            print("-_-_-_-_-_-_-_-_-_-_-_-_-")
+            print("-_-_-_-_-_-_-_-_-_-_-_-_-\n")
             print("This word seems difficult (^_^)")
             print(f"Here is a hint: {secret_word['hint']}")
-            print("-_-_-_-_-_-_-_-_-_-_-_-_-")
+            print("\n-_-_-_-_-_-_-_-_-_-_-_-_-\n")
 
     # If the player has no remaining number of guesses:
     # Display message and the secret word the player did not guess
     if num_of_guesses == 0:
+        print("-------------\n")
         print("Sorry you did not guess the word")
         print(f"The word was \"{secret_word}\"")
         print("Better luck next time! ^_^")
-        exit()
+        print("\n-------------\n")
+        restart_game = input("Do you want to play again? (y/n):")
+        # Ask the player to play again
+        while True:
+            # If yes prepare data again and execute start_game()
+            if restart_game.lower() == "y":
+                restart(secret_word_list)
+            if restart_game.lower() == "n":
+                sys.exit()
+            continue
     # if the player has not guessed the full secret word:
     # Recursion!
     # Use the start_game function with the new values
     if secret_word["word"] != player_word_guess:
-        start_game(secret_word, player_word_guess, num_of_guesses, username)
+        start_game(
+            secret_word,
+            player_word_guess,
+            num_of_guesses,
+            secret_word_list
+            )
     # if the player guessed the word:
     # End the program
     else:
+        print("-------------\n")
         print(f"Congratulations! The word was \"{secret_word['word']}\"")
+        restart_game = input("Do you want to play again? (y/n):")
+        print("\n-------------\n")
+        # Ask the player to play again
+        while True:
+            # If yes prepare data again and execute start_game()
+            if restart_game.lower() == "y":
+                restart(secret_word_list)
+            if restart_game.lower() == "n":
+                sys.exit()
+            continue

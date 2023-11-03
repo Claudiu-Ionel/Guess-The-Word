@@ -1,12 +1,11 @@
-"""Modules imported:
+"""
+Modules imported:
    - datetime - current date methods
-   - random - function that provides a random number
-   hide_word from functions file
-   start_game from functions file
+   - prepare_game from functions.py
+   - start_game from functions.py
 """
 import sys
 from datetime import datetime
-from operator import itemgetter
 from functions import prepare_game
 from functions import start_game
 
@@ -83,7 +82,7 @@ if startGame == ("y" or "Y"):
     secret_word = game_data["secret_word"]
     word_guessed = game_data["word_guessed"]
     num_of_guesses = game_data["num_of_guesses"]
-    start_game(secret_word, word_guessed, num_of_guesses, username)
+    start_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
 else:
     print("Game ended")
     sys.exit()
