@@ -11,11 +11,13 @@ Module providing:
 import random
 import sys
 
-# ANSI escape codes for text colors
+# ANSI escape codes for text colors :
+# These codes are for javascript as the mock terminal runs in the web browser
 RED = '\u001b[31m'
 GREEN = '\u001b[32m'
 YELLOW = '\u001b[33m'
-RESET = '\u001b[37m'  # Reset to default text color
+RESET = '\u001b[0m'  # Reset to default text color
+
 
 def hide_word(word):
     """Function that changes all characters in a word to "*"."""
