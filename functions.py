@@ -85,12 +85,10 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
     player_word_guess = word_guessed
     initial_number_of_guesses = round(len(secret_word["word"]) / 2 + 1)
     print("-------------\n")
-    
     print(f"Your word has {len(secret_word['word'])} characters")
     print(f"You have {num_of_guesses} attempts to guess the word")
     print(f"Your guess: {player_word_guess}")
     print("\n-------------\n")
-    
 
     player_letter_guess = ""
     # users can only input one character and it has to be a letter
@@ -141,6 +139,4 @@ def start_game(secret_word, word_guessed, num_of_guesses, username):
     # if the player guessed the word:
     # End the program
     else:
-        init_guess = initial_number_of_guesses
-        print(f"You guessed the word in {init_guess - num_of_guesses} attempts")
         print(f"Congratulations! The word was \"{secret_word['word']}\"")

@@ -81,7 +81,7 @@ I have manually tested this project by doing the following:
 ## Validator testing
 
    - **PEP8**
-     - No errors were returned from PEP8online.com
+     - No errors were returned from [PEP8 Python Validator](https://pep8ci.herokuapp.com/)
 
 # Deployment
 This project was deployed using Code Institute's mock terminal for Heroku.
