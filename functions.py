@@ -4,7 +4,7 @@ Module providing:
     * replace_hidden_character - replaces "*" with letter at given indexes
     * find_index - Function that finds occurances of a letter in a word
     * prepare_game - Function that prepares data before game start
-    * start_game - Function that runs game functionality
+    * play_game - Function that runs game functionality
     * restart - Function that prepares new data and runs game functionality
 """
 
@@ -95,18 +95,18 @@ def prepare_game(secret_word_list):
 def restart(secret_word_list):
     """Function that restarts the game functionality:
         - uses prepare_game function to set initial data
-        - runs start_game function with new data
+        - runs play_game function with new data
     """
     print("Game started")
     game_data = prepare_game(secret_word_list)
     secret_word = game_data["secret_word"]
     word_guessed = game_data["word_guessed"]
     num_of_guesses = game_data["num_of_guesses"]
-    start_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
+    play_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
     print("\n-------------\n")
 
 
-def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
+def play_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
     """Function that runs game functionality:
         - takes in as input the letter the player is guessing
         - checks if letter is in the word
@@ -167,7 +167,7 @@ def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
         restart_game = input("Do you want to play again? (y/n):")
         # Ask the player to play again
         while True:
-            # If yes prepare data again and execute start_game()
+            # If yes prepare data again and execute play_game()
             if restart_game.lower() == "y":
                 restart(secret_word_list)
             if restart_game.lower() == "n":
@@ -175,9 +175,9 @@ def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
             continue
     # if the player has not guessed the full secret word:
     # Recursion!
-    # Use the start_game function with the new values
+    # Use the play_game function with the new values
     if secret_word["word"] != player_word_guess:
-        start_game(
+        play_game(
             secret_word,
             player_word_guess,
             num_of_guesses,
@@ -192,9 +192,10 @@ def start_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
         print("\n-------------\n")
         # Ask the player to play again
         while True:
-            # If yes prepare data again and execute start_game()
+            # If yes prepare data again and execute play_game()
             if restart_game.lower() == "y":
                 restart(secret_word_list)
             if restart_game.lower() == "n":
+                print("Game ended")
                 sys.exit()
             continue
