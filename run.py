@@ -75,16 +75,22 @@ username = input("What is your name? : ")
 print(f"username: {username}")
 
 # game logic functions
-startGame = input("Want to start the game? (y/n): ")
-if startGame == ("y" or "Y"):
-    print("Game started")
-    game_data = prepare_game(secret_word_list)
-    secret_word = game_data["secret_word"]
-    word_guessed = game_data["word_guessed"]
-    num_of_guesses = game_data["num_of_guesses"]
-    start_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
-else:
-    print("Game ended")
-    sys.exit()
+
+while True:
+    startGame = input("Want to start the game? (y/n): ")
+    if startGame.lower() == "y":
+        print("Game started")
+        game_data = prepare_game(secret_word_list)
+        secret_word = game_data["secret_word"]
+        word_guessed = game_data["word_guessed"]
+        num_of_guesses = game_data["num_of_guesses"]
+        start_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
+        break
+    if startGame.lower() == "n":
+        print("Game ended")
+        sys.exit()
+    else:
+        print("Please type in the correct letter")
+        continue
 
 # End of file (EOF)
