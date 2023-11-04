@@ -106,7 +106,12 @@ def restart(secret_word_list):
     print("\n-------------\n")
 
 
-def play_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
+def play_game(secret_word,
+              word_guessed,
+              num_of_guesses,
+              secret_word_list,
+              letter_guess_set={""}
+              ):
     """Function that runs game functionality:
         - takes in as input the letter the player is guessing
         - checks if letter is in the word
@@ -114,11 +119,18 @@ def play_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
         - checks secret word and player guessed word equality
         - uses recursion to repeat process
     """
+    # check if argument is given to function
+    # if it exists pass it down in recursion
+    # if it doesnt exist then it has the default value of an empty set
+    # this is used to reset the set when you restart the game
+    if letter_guess_set:
+        letter_guess_set = letter_guess_set
     player_word_guess = word_guessed
     initial_number_of_guesses = round(len(secret_word["word"]) / 2 + 1)
     print("-------------\n")
     print(f"Your word has {GREEN}{len(secret_word['word'])}{RESET} characters")
     print(f"You have {RED}{num_of_guesses}{RESET} attempts to guess the word")
+    print(f"You tried to guess these letters: {letter_guess_set}")
     print(f"Your guess: {player_word_guess}")
     print("\n-------------\n")
 
@@ -126,10 +138,14 @@ def play_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
     # users can only input one character and it has to be a letter
     while True:
         user_input = input('Enter a single letter: ')
+        if user_input in letter_guess_set:
+            print(f"You already tried to guess the letter \"{user_input}\"")
+            continue
         # if users entered a single character and it is a letter:
         # break while loop
         if len(user_input) == 1 and user_input.isalpha():
             player_letter_guess = user_input.lower()
+            letter_guess_set.add(user_input.lower())
             break
         # if users have not entered a single letter:
         # repeat while loop
@@ -181,7 +197,8 @@ def play_game(secret_word, word_guessed, num_of_guesses, secret_word_list):
             secret_word,
             player_word_guess,
             num_of_guesses,
-            secret_word_list
+            secret_word_list,
+            letter_guess_set
             )
     # if the player guessed the word:
     # End the program

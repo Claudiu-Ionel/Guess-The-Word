@@ -84,7 +84,12 @@ while True:
         secret_word = game_data["secret_word"]
         word_guessed = game_data["word_guessed"]
         num_of_guesses = game_data["num_of_guesses"]
-        play_game(secret_word, word_guessed, num_of_guesses, secret_word_list)
+        play_game(secret_word,
+                  word_guessed,
+                  num_of_guesses,
+                  secret_word_list,
+                  letter_guess_set={""}
+                  )
         break
     if startGame.lower() == "n":
         print("Game ended")
