@@ -52,8 +52,6 @@ Users can try to guess the word within a given number of attempts.
   - Give more hints and possibly a riddle
   - Store player highscore in Leaderboard system
     - Player high scores are stored and others can compete against it
-  - Players cannot input the same letter 
-  - Actively display letters used by players
   - Display hangman ascii to show how close players are to losing the game
 
 # Data Model
